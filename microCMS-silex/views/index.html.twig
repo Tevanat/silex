@@ -1,0 +1,335 @@
+{% extends "layout_front.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+
+
+<div class="site-outer">
+	<nav class="navbar navbar-fixed-top">
+		<section class="container-fluid">
+			<div class="row">
+				<div class="container-menu">
+					<nav class="menu" id="hb">
+						<div></div>
+						<div></div>
+						<div></div>
+					</nav>
+					<div class="logotype">
+						<div class="big hero">T</div>
+					</div>
+					<div class="checkout">
+					<ul class="nav navbar-nav navbar-right">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="{% if adminMenu is defined %}active{% endif %}"><a href="{{ path('admin') }}"><span class="glyphicon glyphicon-cog"></span> Administration</a></li>
+                        {% endif %}
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-user"></span> Bonjour, {{ app.user.username }} <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ path('logout') }}">Se Déconnecter</a></li>
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-user"></span> Not connected <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ path('login') }}">Se Connecter</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+					</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+	</nav>
+	<div class="site-inner">
+		<section class="container-fluid">
+			<!-- ACCORDION ROW -->
+			<div class="row" id="accueil">
+					<ul class="accordion-group" id="accordion">
+						<li style="background-image: url('../web/images/Glace.jpg');">
+							<a class="page-scroll" href="#experience">
+							<div class="accordion-overlay"></div>
+							<h3>Expériences</h3>
+							<section class="hidden-xs">
+								<article>
+									<p></p>
+								</article>
+							</section>
+							</a>
+						</li>
+
+						<li class="out" style="background-image: url('../web/images/cascade.jpg');" href="">
+							<a class="page-scroll" href="#competence">
+								<div class="accordion-overlay"></div>
+								<h3>Compétences</h3>
+								<section class="hidden-xs">
+									<article>
+										<p>
+										</p>
+									</article>
+								</section>
+								</a>
+						</li>
+
+						<li style="background-image: url('../web/images/tour.jpg');">
+							<a class="page-scroll" href="#portfolio">
+							<div class="accordion-overlay"></div>
+							<h3>Portfolio</h3>
+							<section class="hidden-xs">
+								<article>
+									<p></p>
+								</article>
+							</section>
+							</a>
+						</li>
+						<li style="background-image: url('../web/images/contact.jpg');">
+							<a class="page-scroll" href="#contact">
+							<div class="accordion-overlay"></div>
+							<h3>Contact</h3>
+							<section class="hidden-xs">
+								<article>
+									<p></p>
+								</article>
+							</section>
+							</a>
+						</li>
+					</ul>
+			</div>
+			<!-- BEGIN NEW ROW AFTER ACCORDION -->
+			<div class="row mg  first">
+				<!-- FIRST ROW -->
+				<div class="container" >
+				<h1 class="text-center head red" id="experience">Expériences</h1>
+					<div class="row">
+						{% for experience in experiences %}
+              <article class="row col-md-6 tuile">
+                <h2><a class="articleTitle" href="{{ path('experience', { 'id': experience.id }) }}">{{ experience.poste }}</a></h2>
+                <p><em>{{ experience.debut }}</em> / <em>{{ experience.fin }}</em></p>
+                <div class="col-md-12">
+                  <img src="{{ experience.img }}" title="{{ experience.title }}" class="col-md-8 col-md-offset-2 img-thumbnail" alt="{{ experience.poste }}">
+                </div>
+								<div class="">
+									{{experience.content | raw }}
+								</div>
+              </article>
+            {% endfor %}
+						<div class="row">
+							<button type="button" class="btn btn-default center-block" id="inputDownload" href="CV_teva_natchitz.pdf" target="_blank">
+								<a href="CV_teva_natchitz.pdf" target="_blank">
+								<span class="glyphicon glyphicon-download " align="center" aria-hidden="true"></span>
+								<p>Télécharger mon CV</p>
+								</a>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+			<div class="row mg second">
+				<!-- SECOND ROW -->
+				<div class="container ">
+					<h1 class="text-center head red" id="competence">Compétences</h1>
+					<div class="row">
+						<div class="skills"></div>
+							<!-- <div class="product-box">
+								<!-- {% for article in articles %}
+                                  <article class="row col-md-6 tuile">
+                                      <h2><i class="fa fa-star" aria-hidden="true"></i> <a class="articleTitle" href="{{ path('article', { 'id': article.id }) }}">{{ article.title }}</a></h2>
+                                      <p>{{ article.content }}</p>
+                                  </article>
+                                {% endfor %} -->
+							</div> -->
+					</div>
+				</div>
+			</div>
+
+			<div class="row mg third" >
+				<!-- THIRD ROW -->
+          <div class="container ">
+            <h1 class="text-center head red" id="portfolio">Portfolio</h1>
+              <div class="row">
+								<div id="carousel-example-generic" class="carousel slide">
+									 <!-- Indicators -->
+									<ol class="carousel-indicators">
+										  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+										  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+										  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+									</ol>
+									<div class="carousel-inner" id="slidder" ole="listbox">
+											{% for portfolio in portfolios %}
+												<div class="item">
+												  <img src="{{ portfolio.img }}" title="{{ portfolio.name }}" class="col-md-8 col-md-offset-2 img-thumbnail img-responsive" alt="{{ portfolio.name }}">
+													<div class="carousel-caption">
+														<h2><a class="articleTitle" href="{{ path('portfolio', { 'id': portfolio.id }) }}">{{ portfolio.name }}</a></h2>
+														<p>{{ portfolio.descriptif }}</p>
+													</div>
+												</div>
+				              {% endfor %}
+											<!-- Controls -->
+									     <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+										     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+										      <span class="sr-only">Previous</span>
+									     </a>
+									     <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+									        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+									        <span class="sr-only">Next</span>
+									     </a>
+									</div><!------------FIN DU CARROUSSEL-------------------->
+								</div>
+              </div>
+          </div>
+      </div>
+
+            <div class="row mg fourth">
+				<!-- FOURTH ROW -->
+                <div class="container">
+                    <h1 class="text-center head red" id="contact">Contact</h1>
+                     <div class="row">
+
+                    </div>
+                </div>
+            </div>
+
+		</section>
+	</div>
+	<div class="footer">
+		<footer class="footer-inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<h3 class="h3">About us</h3>
+						<ul class="footer-list">
+							<li><a href="#">Our story</a></li>
+							<li><a href="#">Venue</a></li>
+							<li><a href="#">Other</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h3 class="h3">Partners</h3>
+						<ul class="footer-list">
+							<li><a href="#">DC</a></li>
+							<li><a href="#">Burton</a></li>
+							<li><a href="#">K2</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h3 class="h3">Customer support</h3>
+						<ul class="footer-list">
+							<li><a href="#">Chat with us</a></li>
+							<li><a href="#">+46(0)2453 352</a></li>
+							<li><a href="#">E-mail us</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h3 class="h3">Socials</h3>
+						<ul class="footer-list footer-list-inline">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<!-- NAVIGATION -->
+	<div class="navigation">
+		<button class="navigation-login">
+						<i class="fa fa-shopping-cart"></i> Se connecter <span class="badge badge-white">0</span>
+				</button>
+		<div class="navigation-search">
+			<div id="search">
+				<input type="text" name="input" class="input" placeholder="Search" />
+				<button type="reset" class="search" id="search-button"></button>
+			</div>
+		</div>
+		<div class="navigation-content">
+			<h3>Menu</h3>
+			<ul class="navigation-menu">
+				<li><a class="page-scroll active" href="#accueil">Accueil</a></li>
+				<li><a class="page-scroll" href="#experience"><i class="black fa fa-circle"></i> Expériences </a></li>
+				<li><a class="page-scroll" href="#competence"><i class="blue fa fa-circle" style="color:#236b8d"></i> Compétences </a></li>
+				<li><a class="page-scroll" href="#portfolio"><i class=" fa fa-circle" style="color:lightslategrey" ></i> Portfolio </a></li>
+				<li><a class="page-scroll" href="#contact"><i class=" fa fa-circle" style="color:deepskyblue" ></i> Contact </a></li>
+			</ul>
+			<h3>More</h3>
+			<ul class="navigation-menu">
+				<li><a href="#">About Us</a></li>
+				<li><a href="#">Contact</a></li>
+				<li><a href="#">Info</a></li>
+				<li><a href="#">Collaboration</a></li>
+				<li><a href="#">Customer Service</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- CHECKOUT -->
+	<aside class="to-checkout">
+		<div class="to-checkout-inner">
+			<h3>Product list</h3>
+			<ul class="to-checkout-list">
+				<li><i class="fa fa-check"></i> DC Extreme Snowboard <a href="#" class="remove">Remove</a></li>
+			</ul>
+		</div>
+	</aside>
+	<!-- MODAL -->
+
+</div>
+
+
+<!-- Debut template Twig
+    <div class="container">
+
+  <h1 class="row col-md-12">Articles</h1>
+    {% for article in articles %}
+      <article class="row col-md-6 tuile">
+          <h2><i class="fa fa-star" aria-hidden="true"></i> <a class="articleTitle" href="{{ path('article', { 'id': article.id }) }}">{{ article.title }}</a></h2>
+          <p>{{ article.content }}</p>
+      </article>
+    {% endfor %}
+  <h1 class="row col-md-12">Experiences</h1>
+  {% for experience in experiences %}
+    <article class="row col-md-6 tuile">
+        <h2><a class="articleTitle" href="{{ path('experience', { 'id': experience.id }) }}">{{ experience.poste }}</a></h2>
+        <p><em>{{ experience.debut }}</em> / <em>{{ experience.fin }}</em></p>
+        <div class="col-md-12">
+          <img src="{{ experience.img }}" title="{{ experience.title }}" class="col-md-8 col-md-offset-2 img-thumbnail" alt="{{ experience.title }}">
+        </div>
+        <h3>{{ experience.content }}</h3>
+    </article>
+  {% endfor %}
+  <h1 class="row col-md-12">Loisirs</h1>
+  {% for loisir in loisirs %}
+    <article class="row col-md-6 tuile">
+        <h2><a class="articleTitle" href="{{ path('loisir', { 'id': loisir.id }) }}">{{ loisir.title }}</a></h2>
+        <p>{{ loisir.content }}</p>
+    </article>
+  {% endfor %}
+  <h1 class="row col-md-12">Perso</h1>
+  {% for perso in persos %}
+    <article class="row col-md-6 tuile">
+        <h2><a class="articleTitle" href="{{ path('perso', { 'id': perso.id }) }}">{{ perso.nom }} {{ perso.prenom }}</a></h2>
+        <div class="col-md-12">
+          <img src="{{ perso.img }}" title="{{ perso.nom }}" class="col-md-8 col-md-offset-2 img-thumbnail" alt="{{ perso.nom }}">
+        </div>
+        <p>{{ perso.adresse }}</p>
+        <p>{{ perso.tel }}</p>
+    </article>
+  {% endfor %}
+  <h1 class="row col-md-12">Portfolio</h1>
+  {% for portfolio in portfolios %}
+    <article class="row col-md-6 tuile">
+        <h2><a class="articleTitle" href="{{ path('portfolio', { 'id': portfolio.id }) }}">{{ portfolio.name }}</a></h2>
+        <div class="col-md-12">
+          <p>{{ portfolio.descriptif }}</p>
+          <img src="{{ portfolio.img }}" title="{{ portfolio.name }}" class="col-md-8 col-md-offset-2 img-thumbnail" alt="{{ portfolio.name }}">
+        </div>
+    </article>
+  {% endfor %}
+  </div>-->
+{% endblock %}
