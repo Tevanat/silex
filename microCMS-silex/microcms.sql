@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 14 Août 2017 à 12:11
--- Version du serveur :  10.1.16-MariaDB
--- Version de PHP :  7.0.9
+-- Généré le :  Mer 30 Août 2017 à 11:05
+-- Version du serveur :  10.1.13-MariaDB
+-- Version de PHP :  5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -73,7 +73,7 @@ CREATE TABLE `t_experience` (
   `xp_contrat` varchar(255) NOT NULL,
   `xp_debut` date NOT NULL,
   `xp_fin` date NOT NULL,
-  `xp_descriptif` varchar(255) NOT NULL,
+  `xp_descriptif` varchar(300) NOT NULL,
   `xp_poste` varchar(255) NOT NULL,
   `xp_img` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -83,11 +83,10 @@ CREATE TABLE `t_experience` (
 --
 
 INSERT INTO `t_experience` (`xp_id`, `xp_contrat`, `xp_debut`, `xp_fin`, `xp_descriptif`, `xp_poste`, `xp_img`) VALUES
-(1, 'CDI', '2015-12-05', '2058-12-12', 'reggrgqr  rqf', 'marchand de sable', 'https://i.skyrock.net/7744/78437744/pics/3128557686_1_2_a8PPmyge.jpg'),
-(2, 'CDI', '2012-05-14', '2013-11-05', 'En charge de la flote', 'Armateur dans la Marine Royale', 'https://troisponts.files.wordpress.com/2011/10/quibcardinaux2.jpg'),
-(3, 'CDI', '0000-00-00', '2015-08-05', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum pretium sodales. Nunc faucibus rhoncus sollicitudin. Curabitur vel dui ac felis egestas scelerisque ac sed sem. Mauris erat urna, consectetur ut lobortis vitae, feugiat a purus.', 'neo', 'http://wallpapercave.com/wp/70zTJIp.jpg'),
-(4, 'CDI', '2012-05-14', '2013-11-05', 'avec mon chien Moumoute', 'Punk à chien', 'https://lappartementcollectif.files.wordpress.com/2011/12/punkachiens.jpg'),
-(5, 'CDI', '2015-12-05', '2058-12-12', 'En charge des produits manufacturé', 'President d''une PME', 'https://www.challenges.fr/assets/img/2013/08/06/cover-r4x3w1000-579689287e549-canettes-de-coca-cola.jpg');
+(1, 'CDD', '2017-02-20', '2017-12-20', '<h4>LePoleS : Grande Ecole du Numérique Pantin </h4>\r\n<ul>\r\n<li>Formation Web Force 3</li>\r\n<li>Javascript, Jquery</li>\r\n<li> PHP, SQL, AJAX</li>\r\n<li>Wordpress, Silex</li>\r\n</ul>', 'Développeur / Intégrateur Web', 'http://www.entreprenons-ensemble.fr/sites/www.entreprenons-ensemble.fr/files/logolepolessmall.png'),
+(2, 'CDD', '2014-09-01', '2016-09-01', '<h4> GRDF (Gaz Réseaux De France) Ingénierie Pantin</h4>\r\n<ul>\r\n<li> Gestion de projets </li>\r\n<li> Relation clients/mairies/entreprise prestataires </li>\r\n<li> Gérer l’enveloppe Financière, commande matériel, devis entreprise </li>\r\n<li> Vérifier/superviser les travaux</li> Rédaction compte rendu.\r', 'Chargé d''affaire Ingénierie', 'http://geiqepi.fr/wp-content/uploads/2013/05/grdf.jpg'),
+(3, 'CDI', '2016-00-00', '2016-00-00', '<h4>Uber - Ile de France</h4>\r\n<ul>\r\n<li> Relation client </li>\r\n</ul', 'Chauffeur VTC', 'https://d1a3f4spazzrp4.cloudfront.net/uber-com/1.3.0/d1a3f4spazzrp4.cloudfront.net/images/uber-serp-logo-f6e7549c89.jpg'),
+(4, 'CDI', '2016-00-00', '2016-00-00', '<h4> Star''s Service - Ile de France </h4>\r\n<ul>\r\n<li>Relation client</li>\r\n<li>Autonomie</li>\r\n<li>Organisation</li>\r\n</ul>', 'Chauffeur Livreur', 'http://www.silver-economy-expo.com/wp-content/uploads/2014/10/GROUPE-STARS-SERVICES.jpg');
 
 -- --------------------------------------------------------
 
@@ -176,7 +175,8 @@ CREATE TABLE `t_user` (
 
 INSERT INTO `t_user` (`usr_id`, `usr_name`, `usr_password`, `usr_salt`, `usr_role`) VALUES
 (3, 'admin', '$2y$13$A8MQM2ZNOi99EW.ML7srhOJsCaybSbexAj/0yXrJs4gQ/2BqMMW2K', 'EDDsl&fBCJB|a5XUtAlnQN8', 'ROLE_ADMIN'),
-(6, 'Adricen', '$2y$13$Jz8z9URQQhtMSrJxv.B/iOmudR.ILGk84DN4f31/5YwmDtUZ.Vgc.', '01643b5402b3f86883d75fb', 'ROLE_ADMIN');
+(6, 'Adricen', '$2y$13$Jz8z9URQQhtMSrJxv.B/iOmudR.ILGk84DN4f31/5YwmDtUZ.Vgc.', '01643b5402b3f86883d75fb', 'ROLE_ADMIN'),
+(7, 'Teva', '$2y$13$6zRKaE/EmMNUrSKafmsLr.g9RrDn7..n03oqsNeESBbEKEM9lEyga', 'c1f484695a224ecbf107a29', 'ROLE_ADMIN');
 
 --
 -- Index pour les tables exportées
@@ -244,7 +244,7 @@ ALTER TABLE `t_comment`
 -- AUTO_INCREMENT pour la table `t_experience`
 --
 ALTER TABLE `t_experience`
-  MODIFY `xp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `xp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `t_loisirs`
 --
@@ -264,7 +264,7 @@ ALTER TABLE `t_portfolio`
 -- AUTO_INCREMENT pour la table `t_user`
 --
 ALTER TABLE `t_user`
-  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Contraintes pour les tables exportées
 --
