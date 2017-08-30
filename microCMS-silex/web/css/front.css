@@ -8,11 +8,11 @@
   opacity: 0;
 }
 .accordion-group li:nth-child(3) .accordion-overlay {
-  background-color: lightslategrey;
-  opacity: .8;
+
+
 }
 .accordion-group li:nth-child(3).out .accordion-overlay {
-  background-color: rgba(105,37,252,0.7);
+  background-color: rgba(105,37,252,1);
 }
 .accordion-group li:nth-child(2) .accordion-overlay {
   background-color: #236b8d;
