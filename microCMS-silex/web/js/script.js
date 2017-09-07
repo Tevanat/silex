@@ -205,25 +205,34 @@ var skills = [
       valeur : 9
     },
     {
-      titre : "CSS",
-      valeur : 9,
+      titre : "Javascript - Jquery",
+      valeur : 5,
     },
     {
-      titre : "Javascript",
-      valeur : 5,
+      titre : "CSS",
+      valeur : 9,
     },
     {
       titre : "PHP",
       valeur : 7,
     },
     {
+      titre : "Bootstrap",
+      valeur : 8,
+    },
+    {
       titre : "Wordpress",
       valeur : 6,
     },
     {
-      titre : "Bootstrap",
+      titre : "Silex",
+      valeur : 6,
+    },
+    {
+      titre : "Conduite de Projet",
       valeur : 8,
     }
+
   ]
 
 
@@ -250,7 +259,7 @@ var skills = [
       initSkills(skills)
 
 
-$(document).ready(function () {
+$('.second').hover(function() {
   $('.skill-icons').children('.active').each(function(i) {
     var row = $(this);
     setTimeout(function() {

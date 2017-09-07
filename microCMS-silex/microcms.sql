@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 30 Août 2017 à 11:05
+-- Généré le :  Ven 01 Septembre 2017 à 15:14
 -- Version du serveur :  10.1.13-MariaDB
 -- Version de PHP :  5.6.23
 
@@ -153,7 +153,13 @@ CREATE TABLE `t_portfolio` (
 --
 
 INSERT INTO `t_portfolio` (`port_id`, `port_name`, `port_lieu`, `port_descriptif`, `port_date`, `port_img`) VALUES
-(1, 'Site de la prefecture', 'Paris', 'J''ai fait le sit de la prefecture', '2017-08-09', 'https://cms-assets.tutsplus.com/uploads/users/30/posts/27134/image/elelemnents.jpg');
+(2, 'Site CV', 'Paris', 'Site CV', '0000-00-00', 'images/siteCV.PNG'),
+(4, 'Iphone', 'Paris', 'Travail Pratique SIte Apple', '0000-00-00', 'images/iphone.PNG'),
+(6, 'Oh my cats', 'Paris', 'Travail Pratique Bootstrap', '0000-00-00', 'images/chat.PNG'),
+(7, 'Location de villa', 'Paris', 'Exercice Pratique Bootstrap', '0000-00-00', 'images/villa.PNG'),
+(8, 'Livraison de chicha', 'Paris', 'V1 pour Projet livraison de chicha sur Paris', '0000-00-00', 'images/chicha.PNG'),
+(9, 'Boutique complète', 'Paris', 'Création site e-commerce Complet (Pas stylisé)', '0000-00-00', 'images/boutique.PNG'),
+(10, 'Licorne', 'Paris', 'Exercice Web Force 3', '0000-00-00', 'images/licorne.PNG');
 
 -- --------------------------------------------------------
 
@@ -259,7 +265,7 @@ ALTER TABLE `t_perso`
 -- AUTO_INCREMENT pour la table `t_portfolio`
 --
 ALTER TABLE `t_portfolio`
-  MODIFY `port_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `port_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT pour la table `t_user`
 --

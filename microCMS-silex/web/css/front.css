@@ -1,22 +1,21 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,700);
 .accordion-group li:nth-child(4) .accordion-overlay {
-  background-color: deepskyblue;
-  opacity: .8;
+  background-color: rgba(200,194,160,0);
 }
 .accordion-group li:nth-child(4).out .accordion-overlay {
-  background-color: deepskyblue;
-  opacity: 0;
+  background-color: rgba(200,194,160,0);
 }
 .accordion-group li:nth-child(3) .accordion-overlay {
-
-
+  background-color: black;
+  opacity: 0;
 }
 .accordion-group li:nth-child(3).out .accordion-overlay {
-  background-color: rgba(105,37,252,1);
+  background-color: black;
+  opacity: 0;
 }
 .accordion-group li:nth-child(2) .accordion-overlay {
   background-color: #236b8d;
-  opacity: .8;
+  opacity: 0;
 }
 .accordion-group li:nth-child(2).out .accordion-overlay {
   background-color: #236b8d;
@@ -24,7 +23,7 @@
 }
 .accordion-group li:nth-child(1) .accordion-overlay {
   background-color: black;
-  opacity: .8;
+  opacity: 0;
 }
 .accordion-group li:nth-child(1).out .accordion-overlay {
   background-color: black;
@@ -34,19 +33,27 @@
 .first {
 background-color: rgba(0,0,0,0.7);
 }
+
 .first article {
   height: 500px;
+
 }
 
-.second {
+.second{
 background-color: rgba(0,148,135,0.7);
 }
 .third{
-background-color: rgba(105,37,252,0.7);
+background-color: rgba(0,0,0,0.7);
+}
+
+#slidder {
+  height: 500px;
+}
+.carousel-caption {
+  bottom: -440px !important;
 }
 .fourth{
-background-color: deepskyblue;
-opacity: 0.95;
+background-color: rgba(200,194,160,0.7);
 }
 
 .tuile img{
@@ -82,6 +89,7 @@ opacity: 0.95;
 #inputDownload p{
   font-size: 20px;
   font-family: Verdana;
+  font-weight: bold;
 }
 /*#inputDownload .glyphicon-download:before{*/
 
@@ -110,6 +118,7 @@ a:hover {
   color: #D6CCAD;
 }
 body {
+
   background-image: url('../images/cascade.jpg');
   font-family: "Roboto", sans-serif;
   background-attachment: fixed;
@@ -135,6 +144,7 @@ body {
   font-size: 4.8rem;
   font-weight: 200;
   margin: 1rem;
+  Font-Weight: Bold;
 }
 *,
 *:before,
@@ -145,24 +155,25 @@ body {
 }
 .hero {
   position: relative;
-  -webkit-transform: rotate(0deg);
+  /*-webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   transform: rotate(0deg);
   -webkit-transition: all 350ms ease;
   -moz-transition: all 350ms ease;
-  transition: all 350ms ease;
+  transition: all 350ms ease;*/
+
 }
 .hero:before {
   -webkit-transition: all 350ms ease;
   -moz-transition: all 350ms ease;
   transition: all 350ms ease;
-  content: "N";
+  content: "NATCHITZ";
   position: absolute;
   color: #FF3A3A;
-  left: 0;
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  transform: rotate(180deg);
+  left: 125px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  transform: rotate(0deg);
 }
 .hero:hover {
   color: #FF3A3A;
@@ -172,7 +183,8 @@ body {
   -moz-transform: rotate(0deg);
   transform: rotate(0deg);
   color: #333;
-  left: 35px;
+  left: 125px;
+  content: "N";
 }
 .site-outer {
   overflow: hidden;
@@ -298,6 +310,12 @@ body {
   font-size: 1.8rem;
   font-weight: 300;
   text-transform: uppercase;
+}
+.container{
+  /*min-height: 50vh;*/
+  margin-top: 20px;
+  margin-bottom: 30px;/* poussé de la moitié de hauteur de viewport */
+  /*transform: translateY(-10%); /* tiré de la moitié de sa propre hauteur */
 }
 .accordion-group {
   overflow: hidden;
@@ -964,6 +982,9 @@ body {
   display: inline-block;
   margin-right: 1.8rem;
 }
+.footer-inner img {
+  width: 70px;
+}
 
 /*Compétences*/
 .skills {
@@ -983,6 +1004,18 @@ body {
   width: 50%;
   float: left;
 }
+
+@media (max-width: 1200px) {
+  .first .tuile {
+    height: auto !important;
+    width: auto !important;
+    float: none;
+  }
+  .carousel-caption {
+    bottom: -400px !important;
+  }
+}
+
 @media (max-width: 1000px) {
 
   .skills .skill-column {

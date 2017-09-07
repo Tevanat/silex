@@ -2,10 +2,10 @@
 
 // Deployment on Heroku with ClearDB for MySQL
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$server = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$db = substr($url["path"], 1);
+$server = 'localhost';
+$username = "tevanatchitz";
+$password = "ql8Z%t70";
+$db = "teva_DB";
 
 // Doctrine (db)
 $app['db.options'] = array(
